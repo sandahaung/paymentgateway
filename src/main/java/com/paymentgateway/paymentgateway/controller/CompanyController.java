@@ -6,10 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Handles and retrieves company request
@@ -27,11 +24,11 @@ public class CompanyController {
      * @return the name of the JSP page
      */
     @RequestMapping(value = "/companies", method = RequestMethod.GET)
-    public String getCompanies(Model model) {        
-
+    public String getCompanies(Model model) { 
+                
         // Retrieve all companies by delegating the call to CompanyService
         List<Company> companies = companyService.getAll();
-
+        
         // Attach companies to the Model
         model.addAttribute("companies", companies);
 
@@ -80,8 +77,8 @@ public class CompanyController {
      *
      * @return the name of the JSP page
      */
-    @RequestMapping(value = "/companies/delete", method = RequestMethod.GET)
-    public String delete(@RequestParam(value = "id", required = true) Integer id,
+    @RequestMapping(value = "/companies/delete/id/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") Long id,
             Model model) {        
 
         // Call CompanyService to do the actual deleting
@@ -99,8 +96,8 @@ public class CompanyController {
      *
      * @return the name of the JSP page
      */
-    @RequestMapping(value = "/companies/edit", method = RequestMethod.GET)
-    public String getEdit(@RequestParam(value = "id", required = true) Integer id,
+    @RequestMapping(value = "/companies/edit/id/{id}", method = RequestMethod.GET)
+    public String getEdit(@PathVariable("id") Long id,
             Model model) {      
         // Retrieve existing Company and add to model
         // This is the formBackingOBject
@@ -116,16 +113,16 @@ public class CompanyController {
      *
      * @return the name of the JSP page
      */
-    @RequestMapping(value = "/companies/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/companies/edit/id/{id}", method = RequestMethod.POST)
     public String saveEdit(@ModelAttribute("companyAttribute") Company company,
-            @RequestParam(value = "id", required = true) Integer id,
+            @PathVariable("id") Long id,
             Model model) {       
         // The "companyAttribute" model has been passed to the controller from the JSP
         // We use the name "companyAttribute" because the JSP uses that name
 
         // We manually assign the id because we disabled it in the JSP page
         // When a field is disabled it will not be included in the ModelAttribute
-        company.setId(id.longValue());
+        company.setId(id);
 
         // Delegate to CompanyService for editing
         companyService.edit(company);

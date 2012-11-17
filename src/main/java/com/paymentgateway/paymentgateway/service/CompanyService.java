@@ -40,7 +40,7 @@ public class CompanyService {
     /**
      * Retrieves a single company
      */
-    public Company get(Integer id) {
+    public Company get(Long id) {
         // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();
 
@@ -64,10 +64,9 @@ public class CompanyService {
 
     /**
      * Deletes an existing company
-     *
      * @param id the id of the existing company
      */
-    public void delete(Integer id) {
+    public void delete(Long id) {
         
         // Retrieve session from Hibernate
         Session session = sessionFactory.getCurrentSession();

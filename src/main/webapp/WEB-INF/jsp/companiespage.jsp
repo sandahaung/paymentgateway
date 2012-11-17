@@ -23,8 +23,8 @@
  </thead>
  <tbody>
  <c:forEach items="${companies}" var="company">
-   <c:url var="editUrl" value="/company/companies/edit?id=${company.id}" />
-   <c:url var="deleteUrl" value="/company/companies/delete?id=${company.id}" />
+   <c:url var="editUrl" value="/company/companies/edit/id/${company.id}" />
+   <c:url var="deleteUrl" value="/company/companies/delete/id/${company.id}" />
   <tr>
    <td><c:out value="${company.companyId}" /></td>
    <td><c:out value="${company.companyName}" /></td>

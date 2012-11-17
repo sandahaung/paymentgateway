@@ -4,12 +4,16 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "COMAPNIES")
+@Table(name = "COMPANIES")
 public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    /*@GeneratedValue(strategy = GenerationType.TABLE, generator = "Company_Gen")
+    @TableGenerator(name = "Company_Gen", table = "ID_GEN", 
+            allocationSize = 2, pkColumnName = "TABS", 
+            valueColumnName = "IDS", pkColumnValue = "COM_GEN")*/
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "COMPANY_ID")
     private String companyId;
