@@ -23,4 +23,5 @@
   
  <!-- Load Hibernate related configuration -->
  <import resource="hibernate-context.xml" />
+ <import resource="spring-mail.xml" />
  </beans>

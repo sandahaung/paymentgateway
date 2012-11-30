@@ -24,7 +24,9 @@ public class Company implements Serializable {
     @Column(name = "USERNAME")
     private String username;
     @Column(name = "PASSWORD")
-    private String password;    
+    private String password;  
+    @Column(name = "ENABLED", columnDefinition = "BIT", length = 1)
+    private boolean enabled;
 
     public Long getId() {
         return id;
@@ -72,6 +74,14 @@ public class Company implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override

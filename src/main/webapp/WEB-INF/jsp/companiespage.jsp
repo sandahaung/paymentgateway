@@ -18,6 +18,7 @@
    <th>Company Name</th>
    <th>Company Email</th>
    <th>User Name</th>
+   <th>Enabled</th>
    <th colspan="3"></th>
   </tr>
  </thead>
@@ -30,6 +31,7 @@
    <td><c:out value="${company.companyName}" /></td>
    <td><c:out value="${company.companyEmail}" /></td>
    <td><c:out value="${company.username}" /></td>
+   <td><c:out value="${company.enabled}" /></td>
    <td><a href="${editUrl}">Edit</a></td>
    <td><a href="${deleteUrl}">Delete</a></td>
    <td><a href="${addUrl}">Add</a></td>

@@ -31,7 +31,7 @@ public class CompanyService {
         Session session = sessionFactory.getCurrentSession();
 
         // Create a Hibernate query (HQL)
-        Query query = session.createQuery("FROM  Company");
+        Query query = session.createQuery("FROM Company");
 
         // Retrieve all
         return query.list();
@@ -49,6 +49,16 @@ public class CompanyService {
 
         return company;
     }
+    
+    /**
+     * Retrieves a company with a given username
+     */
+    public Company getByUsername(String username) {        
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM Company WHERE username = :username");
+        query.setParameter("username", username);
+        return (Company) query.uniqueResult();    
+    }
 
     /**
      * Adds a new company
@@ -62,6 +72,18 @@ public class CompanyService {
         session.save(company);
     }
 
+    /**
+     * Updates an existing company
+     */
+    public void update(Company company) {
+        
+        // Retrieve session from Hibernate
+        Session session = sessionFactory.getCurrentSession();
+
+        // Update
+        session.update(company);
+    }
+    
     /**
      * Deletes an existing company
      * @param id the id of the existing company
@@ -95,6 +117,7 @@ public class CompanyService {
         existingCompany.setCompanyEmail(company.getCompanyEmail());
         existingCompany.setUsername(company.getUsername());
         existingCompany.setPassword(company.getPassword());
+        existingCompany.setEnabled(company.isEnabled());
 
         // Save updates
         session.save(existingCompany);

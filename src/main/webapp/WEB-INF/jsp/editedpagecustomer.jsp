@@ -6,16 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Company Edited</title>
+<title>Customer Edited</title>
 </head>
 <body>
  
 <h1>Success</h1>
  
-<p>You have edited a company with id ${id}.</p>
+<p>You have edited a customer with id ${id}.</p>
  
-<c:url var="companyListUrl" value="/company/companies" />
-<p>Return to <a href="${companyListUrl}">Company List</a></p>
+<c:url var="customerListUrl" value="/customer/customers" />
+<p>Return to <a href="${customerListUrl}">Customer List</a></p>
  
 </body>
 </html>
