@@ -12,20 +12,19 @@
             $(document).ready(function(){                
                 $("#username").blur(function(){
                     $("#usernameSpan").text("");
-                    var urlVar = "/paymentgateway/company/verify/username/" + $("#username").val();                                        
-                    $.ajax({
-                        url: urlVar,
-                        dataType: "json",
-                        type: "get",
-                        success: function(data) {                            
-                            if (data.exists == true)
-                                $("#usernameSpan").text(data.message);
-                        },
-                        error:function (xhr, ajaxOptions, thrownError){
-                            alert(xhr.status);
-                            alert(thrownError);
-                        } 
-                    });
+                    var username = $("#username").val();
+                    var urlVar = "/paymentgateway/company/verify/username/" + username;
+                    if (username.length != 0) {
+                        $.ajax({
+                            url: urlVar,
+                            dataType: "json",
+                            type: "get",
+                            success: function(data) {                            
+                                if (data.exists == true)
+                                    $("#usernameSpan").text(data.message);
+                            } 
+                        });
+                    }
                 });
             });
         </script>
